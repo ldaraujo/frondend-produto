@@ -126,7 +126,7 @@ class CriarCliente extends Component {
     };
  
     handleSubmit = event => {
-        fetch("https://cliente-backend.herokuapp.com/cliente", {
+        fetch("${process.env.REACT_APP_API_URL}", {
             method: "post",
             body: JSON.stringify(this.state.cliente),
             headers: {
