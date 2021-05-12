@@ -8,24 +8,24 @@ export default class Main extends Component {
         super(props);
  
         this.state = {
-            usuario: [],
+            cliente: [],
             erro: null
         };
     }
  
     componentDidMount() {
         fetch(`${process.env.REACT_APP_API_URL}`)
-            .then(usuario =>
-                usuario.json().then(usuario => this.setState({ usuario }))
+            .then(cliente =>
+                cliente.json().then(cliente => this.setState({ cliente }))
             )
             .catch(erro => this.setState({ erro }));
     }
  
     render() {
-        const { usuario } = this.state;
+        const { cliente } = this.state;
  
         return (
-            <div className="usuario-list">
+            <div className="cliente-list">
                 <Link to={`/criarCliente`}> <button type="button" class="btn btn-success">Novo</button> </Link>
                 <br /><br />
  
@@ -41,16 +41,16 @@ export default class Main extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {usuario.map((usuario, index) => (
+                        {cliente.map((cliente, index) => (
                             <tr>
-                                <th scope="row">{usuario.id}</th>
-                                <td>{usuario.nome}</td>
-                                <td>{usuario.salario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
-                                <td>{new Date(usuario.dataNascimento).toLocaleDateString('pt-BR', { year: 'numeric', month: '2-digit', day: '2-digit' })}</td>
-                                <td>{usuario.ativo ? "Sim" : "Não"}</td>
-                                <td> <Link to={`/clientes/${usuario.id}`}> <button type="button" class="btn btn-primary">Detalhes</button> </Link> </td>
-                                <td> <Link to={`/editarCliente/${usuario.id}`}> <button type="button" class="btn btn-warning">Atualizar</button> </Link></td>
-                                <td> <Link to={`/deletarCliente/${usuario.id}`}> <button type="button" class="btn btn-danger">Excluir</button> </Link></td>
+                                <th scope="row">{cliente.id}</th>
+                                <td>{cliente.nome}</td>
+                                <td>{cliente.salario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                                <td>{new Date(cliente.dataNascimento).toLocaleDateString('pt-BR', { year: 'numeric', month: '2-digit', day: '2-digit' })}</td>
+                                <td>{cliente.ativo ? "Sim" : "Não"}</td>
+                                <td> <Link to={`/clientes/${cliente.id}`}> <button type="button" class="btn btn-primary">Detalhes</button> </Link> </td>
+                                <td> <Link to={`/editarCliente/${cliente.id}`}> <button type="button" class="btn btn-warning">Atualizar</button> </Link></td>
+                                <td> <Link to={`/deletarCliente/${cliente.id}`}> <button type="button" class="btn btn-danger">Excluir</button> </Link></td>
                             </tr>
                         ))}
                     </tbody>
