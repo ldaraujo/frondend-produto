@@ -54,7 +54,7 @@ class EditarCliente extends Component {
             return (
                 <form onSubmit={this.handleSubmit}>
                     <fieldset>
-                        <legend>Criar Cliente</legend>
+                        <legend>Criar Usuário</legend>
                         <div className="cliente-update">
                             <label htmlFor="nome">Nome </label>
                             <br />
@@ -123,7 +123,7 @@ class EditarCliente extends Component {
     handleSubmit = event => {
         const { id } = this.state.cliente;
  
-        fetch(`https://cliente-backend.herokuapp.com/cliente/${id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/${id}`, {
             method: "put",
             body: JSON.stringify(this.state.cliente),
             headers: {
