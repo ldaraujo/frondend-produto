@@ -54,7 +54,7 @@ class EditarCliente extends Component {
             return (
                 <form onSubmit={this.handleSubmit}>
                     <fieldset>
-                        <legend>Criar Usuário</legend>
+                        <legend>Criar Cliente</legend>
                         <div className="cliente-update">
                             <label htmlFor="nome">Nome </label>
                             <br />
